@@ -20,14 +20,14 @@ jobs:
       - name: Configure AWS credentials from OIDC
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: arn:aws:iam::767397943090:role/ccd-llt
+          role-to-assume: arn:aws:iam::762233763148:role/ccd-llt
           role-session-name: ccd-llt
           aws-region: ap-south-1
 
       - name: Login to Amazon ECR
         run: |
           aws ecr get-login-password --region ap-south-1 | \
-          docker login --username AWS --password-stdin 767397943090.dkr.ecr.ap-south-1.amazonaws.com
+          docker login --username AWS --password-stdin 762233763148.dkr.ecr.ap-south-1.amazonaws.com
 
       - name: Build Docker image
         run: |
@@ -35,8 +35,8 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag ccd-llt-java-app:latest 767397943090.dkr.ecr.ap-south-1.amazonaws.com/ccd-llt-java-app:latest
+          docker tag ccd-llt-java-app:latest 762233763148.dkr.ecr.ap-south-1.amazonaws.com/ccd-llt-java-app:latest
 
       - name: Push Docker image to Amazon ECR
         run: |
-          docker push 767397943090.dkr.ecr.ap-south-1.amazonaws.com/ccd-llt-java-app:latest
+          docker push 762233763148.dkr.ecr.ap-south-1.amazonaws.com/ccd-llt-java-app:latest
